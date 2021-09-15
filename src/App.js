@@ -7,8 +7,12 @@ import './App.css';
 const App = () => {
 	return (
 		<div className="App">
-			<Route path="/" component={Landing} />
-			<Route path="/BookDescription" component={BookDescription} />
+			<Route exact path="/" component={Landing} />
+			<Route
+				exact
+				path="/BookDescription/:volumeId"
+				component={BookDescription}
+			/>
 		</div>
 	);
 };

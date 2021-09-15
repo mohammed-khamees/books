@@ -1,9 +1,15 @@
 import React from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './style.scss';
 
-const Book = () => {
-	return <div>Book Component</div>;
+const Book = ({ book }) => {
+	return (
+		<div>
+			<Link to={`/BookDescription/${book.id}`}>
+				<p>{book.volumeInfo.title}</p>
+			</Link>
+		</div>
+	);
 };
 
 export default Book;
