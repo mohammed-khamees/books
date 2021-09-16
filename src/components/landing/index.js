@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Search from '../search';
 import Book from '../book';
 import Header from '../header';
-import './style.scss';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 const Landing = () => {
 	const [books, setBooks] = useState([]);
+	const classes = useStyles();
 
 	useEffect(() => {
 		getBooks();
@@ -25,13 +26,29 @@ const Landing = () => {
 	};
 
 	return (
-		<div>
+		<div className={classes.root}>
 			<Header />
-			{books.map((book) => (
-				<Book book={book} key={book.id} />
-			))}
+			<Grid container spacing={4}>
+				{books.map((book) => (
+					<Grid item xs={'true'} xl={2}>
+						<Book book={book} key={book.id} />
+					</Grid>
+				))}
+			</Grid>
 		</div>
 	);
 };
 
 export default Landing;
+
+const useStyles = makeStyles((theme) => ({
+	root: {
+		margin: 70,
+		flexGrow: 1,
+	},
+	paper: {
+		padding: theme.spacing(1),
+		textAlign: 'center',
+		color: theme.palette.text.secondary,
+	},
+}));

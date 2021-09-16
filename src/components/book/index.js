@@ -21,31 +21,36 @@ const Book = ({ book }) => {
 
 	return (
 		<Card className={classes.root}>
-			<CardActionArea>
+			<CardActionArea onClick={() => handleClick(book.id)}>
 				{book.volumeInfo.imageLinks ? (
 					<CardMedia
-						component="img"
-						alt="Contemplative Reptile"
-						height="140"
+						className={classes.media}
+						alt={book.volumeInfo.title}
 						image={book.volumeInfo.imageLinks.thumbnail}
-						title="Contemplative Reptile"
+						title={book.volumeInfo.title}
 					/>
 				) : (
 					<CardMedia
-						component="img"
-						alt="Contemplative Reptile"
-						height="140"
+						className={classes.media}
+						alt={book.volumeInfo.title}
 						image="https://lh3.googleusercontent.com/proxy/8cQDCE_3GS3Fw65vq5gxpbpExPiUgq0BJhbs5HQtWZqb1B88oacV3UOkUadXsPvA6Lau9QpeIk0PYbdD0B_ciVMfu7U"
-						title="Contemplative Reptile"
+						title={book.volumeInfo.title}
 					/>
 				)}
 
 				<CardContent>
-					<Typography gutterBottom variant="h5" component="h2">
+					<Typography gutterBottom variant="h5" noWrap component="h2">
 						{book.volumeInfo.title}
 					</Typography>
-					<Typography variant="body2" color="textSecondary" component="p">
-						{book.volumeInfo.authors.join(' ')}
+					<Typography
+						variant="body2"
+						color="textSecondary"
+						noWrap
+						component="p"
+					>
+						{book.volumeInfo.authors
+							? book.volumeInfo.authors.join(' ')
+							: 'Authors Unknown'}
 					</Typography>
 				</CardContent>
 			</CardActionArea>
@@ -67,5 +72,8 @@ export default Book;
 const useStyles = makeStyles({
 	root: {
 		maxWidth: 345,
+	},
+	media: {
+		height: 140,
 	},
 });
