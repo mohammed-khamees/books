@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Search from '../search';
+import Header from '../header';
 import Book from '../book';
 import './style.scss';
 
@@ -15,7 +15,7 @@ const SearchReuslts = () => {
 
 	return (
 		<div>
-			<Search />
+			<Header />
 			{books.map((book) => (
 				<Book book={book} key={book.id} />
 			))}

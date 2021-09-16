@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Search from '../search';
 import Book from '../book';
+import Header from '../header';
 import './style.scss';
 
 const Landing = () => {
@@ -25,7 +26,7 @@ const Landing = () => {
 
 	return (
 		<div>
-			<Search />
+			<Header />
 			{books.map((book) => (
 				<Book book={book} key={book.id} />
 			))}
