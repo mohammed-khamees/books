@@ -27,7 +27,7 @@ const BookDescription = () => {
 	return (
 		<div>
 			<h1>{book.volumeInfo?.title}</h1>
-			<p>{book.volumeInfo?.description}</p>
+			<p dangerouslySetInnerHTML={{ __html: book.volumeInfo?.description }} />
 			<img src={book.volumeInfo?.imageLinks.thumbnail} alt="bookImg" />
 		</div>
 	);
