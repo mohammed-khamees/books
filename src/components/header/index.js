@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
 	Drawer,
@@ -19,16 +18,19 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import clsx from 'clsx';
+
+// components
 import Search from '../search';
 
 const drawerWidth = 240;
 
 const Header = () => {
+	const [open, setOpen] = useState(false);
+
 	const classes = useStyles();
 	const theme = useTheme();
 	const history = useHistory();
-
-	const [open, setOpen] = useState(false);
 
 	const handleDrawerToggle = () => {
 		setOpen(!open);
@@ -43,21 +45,18 @@ const Header = () => {
 					[classes.appBarShift]: open,
 				})}
 			>
-				<Toolbar>
-					<Typography variant="h5" noWrap className={classes.title}>
+				<Toolbar className={classes.Toolbar}>
+					<Typography variant="h5" noWrap>
 						Books
 					</Typography>
-					<Typography className={classes.search}>
-						<Search />
-					</Typography>
+					<Search />
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"
 						edge="end"
 						onClick={handleDrawerToggle}
-						className={clsx(open && classes.hide)}
 					>
-						<MenuIcon />
+						<MenuIcon className={clsx(open && classes.hide)} />
 					</IconButton>
 				</Toolbar>
 			</AppBar>
@@ -120,14 +119,11 @@ const useStyles = makeStyles((theme) => ({
 		}),
 		marginRight: drawerWidth,
 	},
-	title: {
-		flexGrow: 1,
-		marginRight: drawerWidth,
+	Toolbar: {
+		display: 'flex',
+		justifyContent: 'space-between',
 	},
-	search: {
-		flexGrow: 1,
-		marginRight: drawerWidth,
-	},
+
 	hide: {
 		display: 'none',
 	},

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Header from '../header';
-import Book from '../book';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+
+// components
+import Header from '../header';
+import Book from '../book';
 
 const SearchReuslts = () => {
 	const [books, setBooks] = useState([]);

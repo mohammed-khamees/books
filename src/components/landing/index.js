@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Book from '../book';
-import Header from '../header';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+// components
+import Book from '../book';
+import Header from '../header';
+
 const Landing = () => {
 	const [books, setBooks] = useState([]);
+
 	const classes = useStyles();
 
 	useEffect(() => {
