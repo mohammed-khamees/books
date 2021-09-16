@@ -26,15 +26,12 @@ const drawerWidth = 240;
 const Header = () => {
 	const classes = useStyles();
 	const theme = useTheme();
-	const [open, setOpen] = useState(false);
 	const history = useHistory();
 
-	const handleDrawerOpen = () => {
-		setOpen(true);
-	};
+	const [open, setOpen] = useState(false);
 
-	const handleDrawerClose = () => {
-		setOpen(false);
+	const handleDrawerToggle = () => {
+		setOpen(!open);
 	};
 
 	return (
@@ -47,17 +44,17 @@ const Header = () => {
 				})}
 			>
 				<Toolbar>
-					<Typography variant="h6" noWrap className={classes.title}>
+					<Typography variant="h5" noWrap className={classes.title}>
 						Books
 					</Typography>
-					<Typography variant="h6" noWrap className={classes.title}>
+					<Typography className={classes.search}>
 						<Search />
 					</Typography>
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"
 						edge="end"
-						onClick={handleDrawerOpen}
+						onClick={handleDrawerToggle}
 						className={clsx(open && classes.hide)}
 					>
 						<MenuIcon />
@@ -74,7 +71,7 @@ const Header = () => {
 				}}
 			>
 				<div className={classes.drawerHeader}>
-					<IconButton onClick={handleDrawerClose}>
+					<IconButton onClick={handleDrawerToggle}>
 						{theme.direction === 'rtl' ? (
 							<ChevronLeftIcon />
 						) : (
@@ -88,7 +85,7 @@ const Header = () => {
 						button
 						onClick={() => {
 							history.push('/');
-							handleDrawerClose();
+							handleDrawerToggle();
 						}}
 					>
 						<ListItemIcon>
@@ -125,6 +122,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 	title: {
 		flexGrow: 1,
+		marginRight: drawerWidth,
+	},
+	search: {
+		flexGrow: 1,
+		marginRight: drawerWidth,
 	},
 	hide: {
 		display: 'none',
