@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import Landing from './components/landing';
 import BookDescription from './components/bookDescription';
+import SearchReuslts from './components/searchResults';
 import './App.css';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
 				path="/BookDescription/:volumeId"
 				component={BookDescription}
 			/>
+			<Route exact path="/searchResults" component={SearchReuslts} />
 		</div>
 	);
 };

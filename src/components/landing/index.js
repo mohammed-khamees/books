@@ -4,8 +4,6 @@ import Search from '../search';
 import Book from '../book';
 import './style.scss';
 
-const API_KEY = 'AIzaSyDX7JvvMomq208XYnuKluSc6wj6hKsXVOI';
-
 const Landing = () => {
 	const [books, setBooks] = useState([]);
 
@@ -16,10 +14,9 @@ const Landing = () => {
 	const getBooks = async () => {
 		try {
 			const res = await axios.get(
-				`https://www.googleapis.com/books/v1/volumes?q=inauthor:keyes&maxResults=40&key=${API_KEY}`,
+				`https://www.googleapis.com/books/v1/volumes?q=inauthor:keyes&maxResults=40&key=${process.env.REACT_APP_API_KEY}`,
 			);
 
-			// console.log(res.data.items);
 			setBooks(res.data.items);
 		} catch (error) {
 			console.log(error);
@@ -30,7 +27,7 @@ const Landing = () => {
 		<div>
 			<Search />
 			{books.map((book) => (
-				<Book book={book} />
+				<Book book={book} key={book.id} />
 			))}
 		</div>
 	);

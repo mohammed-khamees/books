@@ -3,8 +3,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './style.scss';
 
-const API_KEY = 'AIzaSyDX7JvvMomq208XYnuKluSc6wj6hKsXVOI';
-
 const BookDescription = () => {
 	let { volumeId } = useParams();
 
@@ -17,10 +15,8 @@ const BookDescription = () => {
 	const getBook = async () => {
 		try {
 			const res = await axios.get(
-				`https://www.googleapis.com/books/v1/volumes/${volumeId}?key=${API_KEY}`,
+				`https://www.googleapis.com/books/v1/volumes/${volumeId}?key=${process.env.REACT_APP_API_KEY}`,
 			);
-
-			console.log(res.data);
 
 			setBook(res.data);
 		} catch (error) {
