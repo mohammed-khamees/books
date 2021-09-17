@@ -3,7 +3,6 @@ import { Route } from 'react-router-dom';
 import Landing from './components/landing';
 import BookDescription from './components/bookDescription';
 import SearchReuslts from './components/searchResults';
-import './App.css';
 
 const App = () => {
 	return (
