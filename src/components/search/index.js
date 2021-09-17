@@ -20,7 +20,10 @@ const Search = () => {
 				`https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&maxResults=40&key=${process.env.REACT_APP_API_KEY}`,
 			);
 
-			history.push('/searchResults', { books: res.data.items });
+			history.push('/searchResults', {
+				books: res.data.items,
+				searchQuery: searchQuery,
+			});
 		} catch (error) {
 			console.log(error);
 		}

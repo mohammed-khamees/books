@@ -22,7 +22,6 @@ const BookDescription = () => {
 				`https://www.googleapis.com/books/v1/volumes/${volumeId}?key=${process.env.REACT_APP_API_KEY}`,
 			);
 
-			console.log(res.data);
 			setBook(res.data);
 		} catch (error) {
 			console.log(error);
