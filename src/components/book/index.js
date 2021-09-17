@@ -31,7 +31,7 @@ const Book = ({ book }) => {
 					<CardMedia
 						className={classes.media}
 						alt={book.volumeInfo.title}
-						image="https://lh3.googleusercontent.com/proxy/8cQDCE_3GS3Fw65vq5gxpbpExPiUgq0BJhbs5HQtWZqb1B88oacV3UOkUadXsPvA6Lau9QpeIk0PYbdD0B_ciVMfu7U"
+						image="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"
 						title={book.volumeInfo.title}
 					/>
 				)}
@@ -69,7 +69,7 @@ export default Book;
 
 const useStyles = makeStyles({
 	root: {
-		maxWidth: 345,
+		width: 250,
 	},
 	media: {
 		height: 140,

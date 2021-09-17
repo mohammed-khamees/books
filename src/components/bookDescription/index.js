@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import axios from 'axios';
 import './style.scss';
 
@@ -39,11 +38,19 @@ const BookDescription = () => {
 				<h1 className="title">{book.volumeInfo?.title}</h1>
 				<h2 className="subtitle">{book.volumeInfo?.subtitle}</h2>
 				<div className="infoContainer">
-					<img
-						className="thumbnail"
-						src={book.volumeInfo?.imageLinks.thumbnail}
-						alt="bookImg"
-					/>
+					{book.volumeInfo?.imageLinks ? (
+						<img
+							className="thumbnail"
+							src={book.volumeInfo?.imageLinks?.thumbnail}
+							alt={book.volumeInfo?.title}
+						/>
+					) : (
+						<img
+							className="thumbnail"
+							src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png"
+							alt={book.volumeInfo?.title}
+						/>
+					)}
 					<div className="infos">
 						<h1>
 							Authors:{' '}
