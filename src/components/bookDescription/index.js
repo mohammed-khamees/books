@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import StarIcon from '@mui/icons-material/Star';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import axios from 'axios';
 import './style.scss';
 
@@ -42,7 +46,7 @@ const BookDescription = () => {
 					/>
 					<div className="infos">
 						<h1>
-							Authors:
+							Authors:{' '}
 							{book.volumeInfo?.authors
 								? book.volumeInfo.authors.join(' ,')
 								: 'Authors Unknown'}
@@ -50,6 +54,35 @@ const BookDescription = () => {
 						<h1>Published At: {book.volumeInfo?.publishedDate}</h1>
 						<h1>Publisher: {book.volumeInfo?.publisher}</h1>
 						<h1>Pages: {book.volumeInfo?.printedPageCount} pages</h1>
+						<h2>
+							{book.volumeInfo?.averageRating ? (
+								<Box
+									sx={{
+										width: 200,
+										display: 'flex',
+										alignItems: 'center',
+									}}
+								>
+									<Rating
+										value={Number(book.volumeInfo?.averageRating)}
+										readOnly
+										precision={0.1}
+										size="large"
+										max={5}
+										emptyIcon={
+											<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
+										}
+									/>
+									<Box sx={{ ml: 2 }}>{book.volumeInfo?.averageRating}</Box>
+								</Box>
+							) : (
+								'No Rating'
+							)}
+						</h2>
+						<h2 style={{ color: '#aaa' }}>
+							{book.saleInfo?.listPrice?.amount}{' '}
+							{book.saleInfo?.listPrice?.currencyCode}
+						</h2>
 					</div>
 				</div>
 				<p
